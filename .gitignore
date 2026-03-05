@@ -1,0 +1,10 @@
+*.vcxproj
+*.vcxproj.filters
+.vs/**
+__vm/**
+*.shm
+UpdateDemoSource/.vs/**
+UpdateDemoSource/Debug/**
+UpdateDemoSource/Release/**
+UpdateDemoSource/obj/**
+
