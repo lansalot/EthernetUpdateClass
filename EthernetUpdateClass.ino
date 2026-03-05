@@ -1,6 +1,5 @@
-#include "PGNs.h"
-#include <NativeEthernet.h>
-#include <NativeEthernetUdp.h>
+//#include <NativeEthernet.h>
+//#include <NativeEthernetUdp.h>
 
 struct ConfigIP
 {
@@ -16,12 +15,9 @@ byte mac[] = {0x00, 0x00, 0x56, 0x00, 0x00, 0x78};
 
 IPAddress Eth_ipDestination;
 
-#define ModuleID 0
-#define InoType 0
-
 #include "EthernetUpdater.h"
 
-EthernetUpdater updater(ModuleID, InoType);
+EthernetUpdater updater();
 
 
 // Setup procedure ------------------------

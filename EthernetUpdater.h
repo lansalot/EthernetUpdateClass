@@ -6,7 +6,7 @@
 class EthernetUpdater
 {
 public:
-    EthernetUpdater(uint8_t moduleId, uint8_t inoType);
+    EthernetUpdater();
 
     void begin();
     void poll();
@@ -33,9 +33,6 @@ private:
     EthernetUDP comm_;
     IPAddress destination_;
     bool started_;
-
-    uint8_t moduleId_;
-    uint8_t inoType_;
 
     bool updateMode_;
     uint16_t packetLength_;
