@@ -1,6 +1,6 @@
-//#include <NativeEthernet.h>
-//#include <NativeEthernetUdp.h>
-
+// Usual AOG firmware sections here, nothing special
+#include <NativeEthernet.h>
+#include <NativeEthernetUdp.h>
 struct ConfigIP
 {
     uint8_t ipOne = 192;
@@ -8,17 +8,16 @@ struct ConfigIP
     uint8_t ipThree = 1;
 };
 ConfigIP networkAddress; // 3 bytes
-
-// IP & MAC address of this module of this module
 byte Eth_myip[4] = {0, 0, 0, 0}; // This is now set via AgIO
 byte mac[] = {0x00, 0x00, 0x56, 0x00, 0x00, 0x78};
-
 IPAddress Eth_ipDestination;
+// End of usual AOG firmware sections
 
+
+// the Ethernetupdater, these two lines are all you need in declarations
 #include "EthernetUpdater.h"
-
-EthernetUpdater updater();
-
+EthernetUpdater updater;
+// End of Ethernetupdater declarations
 
 // Setup procedure ------------------------
 void setup()
@@ -28,11 +27,13 @@ void setup()
     delay(100);
     Serial.println("Start setup");
     EthernetStart();
+	// Initialise the updater after the Ethernet is up and running, otherwise it will fail to start
     updater.begin();
     Serial.println("\r\nEnd setup, loop time!");
 }
 
 void loop()
 {
+    // poll once in your usual AOG loop(), that's it! No more changes
     updater.poll();
 }
