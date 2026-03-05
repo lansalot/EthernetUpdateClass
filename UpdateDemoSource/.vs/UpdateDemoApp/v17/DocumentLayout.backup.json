@@ -1,0 +1,184 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|c:\\github\\ethernetupdate\\updatedemosource\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|c:\\github\\ethernetupdate\\updatedemosource\\pgn32800.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|solutionrelative:pgn32800.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|c:\\github\\ethernetupdate\\updatedemosource\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|c:\\github\\ethernetupdate\\updatedemosource\\udpcomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|solutionrelative:udpcomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|c:\\github\\ethernetupdate\\updatedemosource\\clstools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|solutionrelative:clstools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|c:\\github\\ethernetupdate\\updatedemosource\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|c:\\github\\ethernetupdate\\updatedemosource\\pgn33152.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D8A9E6-50E7-4B0D-BD53-8579A87A61BD}|UpdateDemoApp.csproj|solutionrelative:pgn33152.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3cc341bf-4994-46c1-8917-cfb66f339099}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAArwDEAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T10:23:29.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T10:23:25.303Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "clsTools.cs",
+              "DocumentMoniker": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\clsTools.cs",
+              "RelativeDocumentMoniker": "clsTools.cs",
+              "ToolTip": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\clsTools.cs",
+              "RelativeToolTip": "clsTools.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T10:22:21.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UDPcomm.cs",
+              "DocumentMoniker": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\UDPcomm.cs",
+              "RelativeDocumentMoniker": "UDPcomm.cs",
+              "ToolTip": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\UDPcomm.cs",
+              "RelativeToolTip": "UDPcomm.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAtwBsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T10:22:05.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T10:22:04.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PGN33152.cs",
+              "DocumentMoniker": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\PGN33152.cs",
+              "RelativeDocumentMoniker": "PGN33152.cs",
+              "ToolTip": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\PGN33152.cs",
+              "RelativeToolTip": "PGN33152.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T10:22:03.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PGN32800.cs",
+              "DocumentMoniker": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\PGN32800.cs",
+              "RelativeDocumentMoniker": "PGN32800.cs",
+              "ToolTip": "C:\\Github\\EthernetUpdate\\UpdateDemoSource\\PGN32800.cs",
+              "RelativeToolTip": "PGN32800.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAjwCoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T10:21:57.727Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 214,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cf7341e6-9713-4309-bea6-cdb743e1804d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
