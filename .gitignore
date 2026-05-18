@@ -3,8 +3,9 @@
 .vs/**
 __vm/**
 *.shm
-UpdateDemoSource/.vs/**
-UpdateDemoSource/Debug/**
-UpdateDemoSource/Release/**
-UpdateDemoSource/obj/**
+
 .pio
+/TeensyFlashSource/.vs
+TeensyFlashSource/Debug/**
+TeensyFlashSource/Release/**
+TeensyFlashSource/obj/**
