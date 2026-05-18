@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UpdateDemoApp.Properties {
+namespace TeensyFlash.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

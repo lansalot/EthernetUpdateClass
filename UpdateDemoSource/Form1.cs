@@ -8,7 +8,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace UpdateDemoApp
+namespace TeensyFlash
 {
     public partial class Form1 : Form
     {

@@ -175,16 +175,6 @@ void EthernetUpdater::sendReceiveReady()
 	comm_.write(data, sizeof(data));
 	comm_.endPacket();
 
-	if (sender_ != destination_)
-	{
-		Serial.print("Sending receive ready packet to sender ");
-		Serial.print(sender_);
-		Serial.print(":");
-		Serial.println(SendPort);
-		comm_.beginPacket(sender_, SendPort);
-		comm_.write(data, sizeof(data));
-		comm_.endPacket();
-	}
 }
 
 int EthernetUpdater::processHexRecord(char* packetBuffer, int packetSize)

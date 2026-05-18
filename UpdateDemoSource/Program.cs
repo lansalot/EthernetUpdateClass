@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UpdateDemoApp
+namespace TeensyFlash
 {
     internal static class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace UpdateDemoApp
+﻿namespace TeensyFlash
 {
     partial class Form1
     {
@@ -118,7 +118,7 @@
             this.btnSendSubnet.BackColor = System.Drawing.Color.Transparent;
             this.btnSendSubnet.FlatAppearance.BorderSize = 0;
             this.btnSendSubnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendSubnet.Image = global::UpdateDemoApp.Properties.Resources.Update4;
+            this.btnSendSubnet.Image = global::TeensyFlash.Properties.Resources.Update4;
             this.btnSendSubnet.Location = new System.Drawing.Point(433, 21);
             this.btnSendSubnet.Name = "btnSendSubnet";
             this.btnSendSubnet.Size = new System.Drawing.Size(72, 72);
@@ -133,7 +133,7 @@
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGreen;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::UpdateDemoApp.Properties.Resources.Update;
+            this.button3.Image = global::TeensyFlash.Properties.Resources.Update;
             this.button3.Location = new System.Drawing.Point(312, 21);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(72, 72);
@@ -147,7 +147,7 @@
             this.btnBrowse.BackColor = System.Drawing.Color.Transparent;
             this.btnBrowse.FlatAppearance.BorderSize = 0;
             this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBrowse.Image = global::UpdateDemoApp.Properties.Resources.file;
+            this.btnBrowse.Image = global::TeensyFlash.Properties.Resources.file;
             this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBrowse.Location = new System.Drawing.Point(17, 350);
             this.btnBrowse.Name = "btnBrowse";
@@ -162,7 +162,7 @@
             this.btnUpload.BackColor = System.Drawing.Color.Transparent;
             this.btnUpload.FlatAppearance.BorderSize = 0;
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpload.Image = global::UpdateDemoApp.Properties.Resources.flash;
+            this.btnUpload.Image = global::TeensyFlash.Properties.Resources.flash;
             this.btnUpload.Location = new System.Drawing.Point(145, 350);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(76, 72);
@@ -176,7 +176,7 @@
             this.bntOK.BackColor = System.Drawing.Color.Transparent;
             this.bntOK.FlatAppearance.BorderSize = 0;
             this.bntOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntOK.Image = global::UpdateDemoApp.Properties.Resources.bntOK_Image;
+            this.bntOK.Image = global::TeensyFlash.Properties.Resources.bntOK_Image;
             this.bntOK.Location = new System.Drawing.Point(452, 356);
             this.bntOK.Name = "bntOK";
             this.bntOK.Size = new System.Drawing.Size(76, 72);

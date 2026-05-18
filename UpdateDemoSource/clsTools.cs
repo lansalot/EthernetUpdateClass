@@ -9,12 +9,12 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows.Forms;
 
-namespace UpdateDemoApp
+namespace TeensyFlash
 {
     public class clsTools
     {
         private static Hashtable ht;
-        private string cAppName = "UpdateDemoApp";
+        private string cAppName = "TeensyFlash";
         private string cPropertiesFile = "";
         private string cSettingsDir = "";
         private Form1 mf;

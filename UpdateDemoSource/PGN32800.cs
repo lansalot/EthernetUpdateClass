@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UpdateDemoApp
+namespace TeensyFlash
 {
     public class PGN32800
     {
