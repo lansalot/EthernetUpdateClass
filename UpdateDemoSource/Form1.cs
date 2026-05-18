@@ -33,12 +33,11 @@ namespace UpdateDemoApp
         private string cSubnet = "192.168.5.1";
         private bool FormEdited = false;
         private Dictionary<string, byte> hexindex = new Dictionary<string, byte>();
-        private string IDname;
         private bool Initializing = true;
         private byte ModuleID = 0;
         private byte ModuleType = 0;          // 0 - Teensy AutoSteer, 1 - Teensy Rate
         private int TotalLines = 0;
-        private bool UseDefault = false;
+        private string hexFileName = "";
 
         public Form1()
         {
@@ -65,12 +64,12 @@ namespace UpdateDemoApp
             int lines = data[2] | (data[3] << 8) | (data[4] << 16) | (data[5] << 24);
             if (TotalLines == lines)
             {
-                Tls.ShowHelp("Upload Success! Wait about 1 minute for the new firmware to be installed. The subnet may need to be updated after install.");
+                tbMessages.Text += "Upload Success! Wait about 1 minute for the new firmware to be installed. The subnet may need to be updated after install.\r\n";
                 UDPupdate.SendUDPMessage(new byte[] { 0x3a, 0x00, 0x00, 0x00, 0x06, 0xFA });
             }
             else
             {
-                Tls.ShowHelp("Upload did not succeed");
+                tbMessages.Text += "Upload did not succeed\r\n";
                 UDPupdate.SendUDPMessage(new byte[] { 0x3a, 0x00, 0x00, 0x00, 0x07, 0xF9 });
             }
         }
@@ -81,35 +80,17 @@ namespace UpdateDemoApp
             {
                 if (data[2] == ModuleID && data[3] == 100)
                 {
-                    string filename = "";
                     timer1.Enabled = false;
-
-                    if (UseDefault)
-                    {
-                        filename = Path.GetTempFileName();
-                        switch (ModuleType)
-                        {
-                            default:
-                                // autosteer
-                                File.WriteAllBytes(filename, Properties.Resources.EthernetUpdateDemo_ino);
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        filename = tbHexfile.Text;
-                    }
-
-                    if (File.Exists(filename))
+                    if (File.Exists(hexFileName))
                     {
                         progressBar.Value = 0;
-                        int ExpectedLines = (int)new FileInfo(filename).Length / 45;
+                        int ExpectedLines = (int)new FileInfo(hexFileName).Length / 45;
 
                         hexindex.Clear();
                         for (int i = 0; i <= 255; i++) hexindex.Add(i.ToString("X2"), (byte)i);
                         hexindex.Add("::", 0x3a);
                         TotalLines = 0;
-                        using (StreamReader reader = new StreamReader(filename))
+                        using (StreamReader reader = new StreamReader(hexFileName))
                         {
                             string line;
                             //read all the lines
@@ -168,7 +149,6 @@ namespace UpdateDemoApp
             if (FormEdited)
             {
                 // save
-                Tls.SaveProperty(IDname, "0");
                 SetButtons(false);
                 UpdateForm();
             }
@@ -180,8 +160,7 @@ namespace UpdateDemoApp
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            UseDefault = false;
-            tbHexfile.Text = "";
+            tbMessages.Text = "";
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "hex files (*.hex)|*.hex|All files (*.*)|*.*";
@@ -189,19 +168,12 @@ namespace UpdateDemoApp
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    tbHexfile.Text = openFileDialog.FileName;
-                    tbHexfile.Select(tbHexfile.Text.Length, 0);
-                    tbHexfile.ScrollToCaret();
+                    hexFileName = openFileDialog.FileName;
+                    tbMessages.Text = hexFileName + "\r\n";
+                    tbMessages.Select(tbMessages.Text.Length, 0);
+                    tbMessages.ScrollToCaret();
                 }
             }
-        }
-
-        private void btnBrowse_HelpRequested(object sender, HelpEventArgs hlpevent)
-        {
-            string Message = "Search for new firmware (hex) files.";
-
-            Tls.ShowHelp(Message, "Browse");
-            hlpevent.Handled = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -209,40 +181,20 @@ namespace UpdateDemoApp
             btnUpload.Enabled = true;
         }
 
-        private void btnDefault_Click(object sender, EventArgs e)
-        {
-            UseDefault = true;
-            tbHexfile.Text = "Default file:  EthernetUpdateDemo.ino";
-        }
-
-        private void btnDefault_HelpRequested(object sender, HelpEventArgs hlpevent)
-        {
-            string Message = "Use the base firmware included in the app.";
-
-            Tls.ShowHelp(Message, "Use default");
-            hlpevent.Handled = true;
-        }
-
         private void btnSendSubnet_Click(object sender, EventArgs e)
         {
             PGN33152 SetSubnet = new PGN33152(this);
             if (SetSubnet.Send(Subnet))
             {
-                Tls.ShowHelp("New Subnet address sent.", "Subnet", 10000);
+                tbMessages.Text += "New Subnet address sent.\r\n";
             }
             else
             {
-                Tls.ShowHelp("New Subnet address not sent.", "Subnet", 10000);
+                tbMessages.Text += "New Subnet address not sent.\r\n";
             }
         }
 
-        private void btnSendSubnet_HelpRequested(object sender, HelpEventArgs hlpevent)
-        {
-            string Message = "Change module subnet.";
 
-            Tls.ShowHelp(Message, "Subnet");
-            hlpevent.Handled = true;
-        }
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
@@ -259,13 +211,6 @@ namespace UpdateDemoApp
             }
         }
 
-        private void btnUpload_HelpRequested(object sender, HelpEventArgs hlpevent)
-        {
-            string Message = "Upload to Teensy.";
-
-            Tls.ShowHelp(Message, "Upload");
-            hlpevent.Handled = true;
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -292,27 +237,13 @@ namespace UpdateDemoApp
             Tls.LoadFormData(this);
             this.BackColor = Properties.Settings.Default.DayColour;
 
-            UseDefault = true;
-            switch (ModuleType)
-            {
-                default:
-                    // autosteer
-                    //tbHexfile.Text = "Default file version date: " + Tls.TeensyAutoSteerVersion();
-                    this.Text = "Teensy Firmware Update";
-                    IDname = "TeensySteerID";
-                    break;
-            }
-
-            if (int.TryParse(Tls.LoadProperty(IDname), out int ID)) ModuleID = (byte)ID;
-
             UpdateForm();
             UDPupdate.NetworkEP = Subnet;
             UDPupdate.StartUDPServer();
             if (!UDPupdate.IsUDPSendConnected)
             {
-                Tls.ShowHelp("UDPupdate failed to start.", "", 3000, true, true);
+                tbMessages.Text += "UDPupdate failed to start.\r\n";
             }
-            btnDefault_Click(sender, e);
         }
 
         private void LoadCombo()
@@ -368,9 +299,9 @@ namespace UpdateDemoApp
 
         private void tbHexfile_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            string Message = "Filename of firmware to upload to the Teensy.";
+            string Message = "Filename of firmware to upload to the Teensy.\r\n";
 
-            Tls.ShowHelp(Message, "Firmware");
+            tbMessages.Text += Message;
             hlpevent.Handled = true;
         }
 
@@ -381,7 +312,7 @@ namespace UpdateDemoApp
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Tls.ShowHelp("Could not connect to the module. Check connection or subnet.");
+            tbMessages.Text += "Could not connect to the module. Check connection or subnet.\r\n" + "\r\n";
             timer1.Enabled = false;
             SetButtonUpload(true);
         }

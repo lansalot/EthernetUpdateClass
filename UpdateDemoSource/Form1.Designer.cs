@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lbCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbHexfile = new System.Windows.Forms.TextBox();
+            this.tbMessages = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -68,15 +68,15 @@
             this.label3.TabIndex = 231;
             this.label3.Text = "Lines";
             // 
-            // tbHexfile
+            // tbMessages
             // 
-            this.tbHexfile.Location = new System.Drawing.Point(12, 124);
-            this.tbHexfile.Multiline = true;
-            this.tbHexfile.Name = "tbHexfile";
-            this.tbHexfile.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbHexfile.Size = new System.Drawing.Size(516, 184);
-            this.tbHexfile.TabIndex = 228;
-            this.tbHexfile.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.tbHexfile_HelpRequested);
+            this.tbMessages.Location = new System.Drawing.Point(12, 124);
+            this.tbMessages.Multiline = true;
+            this.tbMessages.Name = "tbMessages";
+            this.tbMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbMessages.Size = new System.Drawing.Size(516, 184);
+            this.tbMessages.TabIndex = 228;
+            this.tbMessages.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.tbHexfile_HelpRequested);
             // 
             // progressBar
             // 
@@ -144,7 +144,6 @@
             this.btnSendSubnet.TabIndex = 238;
             this.btnSendSubnet.UseVisualStyleBackColor = false;
             this.btnSendSubnet.Click += new System.EventHandler(this.btnSendSubnet_Click);
-            this.btnSendSubnet.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.btnSendSubnet_HelpRequested);
             // 
             // button3
             // 
@@ -191,7 +190,6 @@
             this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            this.btnBrowse.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.btnBrowse_HelpRequested);
             // 
             // btnUpload
             // 
@@ -206,7 +204,6 @@
             this.btnUpload.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnUpload.UseVisualStyleBackColor = false;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
-            this.btnUpload.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.btnUpload_HelpRequested);
             // 
             // bntOK
             // 
@@ -234,7 +231,7 @@
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.bntOK);
-            this.Controls.Add(this.tbHexfile);
+            this.Controls.Add(this.tbMessages);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -260,7 +257,7 @@
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Button bntOK;
-        private System.Windows.Forms.TextBox tbHexfile;
+        private System.Windows.Forms.TextBox tbMessages;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;

@@ -35,7 +35,7 @@ void EthernetStart()
     Eth_myip[0] = networkAddress.ipOne;
     Eth_myip[1] = networkAddress.ipTwo;
     Eth_myip[2] = networkAddress.ipThree;
-    Eth_myip[3] = 226; // 226 is tool steer
+    Eth_myip[3] = 126;
 
     Ethernet.setLocalIP(Eth_myip);
     Serial.println("\r\nEthernet status OK");

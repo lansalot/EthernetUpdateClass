@@ -32,8 +32,8 @@ private:
 
     EthernetUDP comm_;
     IPAddress destination_;
+    IPAddress sender_;
     bool started_;
-    uint8_t moduleId_;
 
     bool updateMode_;
     uint16_t packetLength_;
