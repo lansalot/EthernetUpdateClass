@@ -11,6 +11,7 @@ EthernetUpdater::EthernetUpdater()
 	: comm_(),
 	destination_(),
 	started_(false),
+	moduleId_(0),
 	updateMode_(false),
 	packetLength_(0),
 	displayCount_(0),
@@ -87,6 +88,7 @@ void EthernetUpdater::poll()
 		{
 			if (goodCRC(receivedData_, pgnLength))
 			{
+				moduleId_ = receivedData_[2];
 
 				if (firmware_buffer_init(&bufferAddr_, &bufferSize_))
 				{
@@ -158,7 +160,7 @@ void EthernetUpdater::sendReceiveReady()
 	uint8_t data[5];
 	data[0] = 34;
 	data[1] = 128;
-	data[2] = 0;
+	data[2] = moduleId_;
 	data[3] = 100;
 	data[4] = crc(data, 4, 0);
 

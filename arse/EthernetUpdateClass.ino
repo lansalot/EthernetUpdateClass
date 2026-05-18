@@ -10,7 +10,6 @@ struct ConfigIP
 ConfigIP networkAddress; // 3 bytes
 byte Eth_myip[4] = {0, 0, 0, 0}; // This is now set via AgIO
 byte mac[] = {0x00, 0x00, 0x56, 0x00, 0x00, 0x78};
-IPAddress Eth_ipDestination;
 // End of usual AOG firmware sections
 
 
