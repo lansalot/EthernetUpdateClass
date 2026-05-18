@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.lbCount = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.tbMessages = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,48 +39,31 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSendSubnet = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnUpload = new System.Windows.Forms.Button();
             this.bntOK = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbCount
-            // 
-            this.lbCount.AutoSize = true;
-            this.lbCount.Location = new System.Drawing.Point(314, 323);
-            this.lbCount.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lbCount.Name = "lbCount";
-            this.lbCount.Size = new System.Drawing.Size(20, 24);
-            this.lbCount.TabIndex = 232;
-            this.lbCount.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(247, 323);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 24);
-            this.label3.TabIndex = 231;
-            this.label3.Text = "Lines";
-            // 
             // tbMessages
             // 
+            this.tbMessages.AcceptsReturn = true;
+            this.tbMessages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbMessages.Location = new System.Drawing.Point(12, 124);
             this.tbMessages.Multiline = true;
             this.tbMessages.Name = "tbMessages";
             this.tbMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbMessages.Size = new System.Drawing.Size(516, 184);
             this.tbMessages.TabIndex = 228;
+            this.tbMessages.Text = "Select a firmware, then flash!";
+            this.tbMessages.WordWrap = false;
             this.tbMessages.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.tbHexfile_HelpRequested);
             // 
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(106, 325);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(115, 20);
+            this.progressBar.Size = new System.Drawing.Size(422, 25);
             this.progressBar.TabIndex = 227;
             // 
             // label2
@@ -91,9 +72,9 @@
             this.label2.Location = new System.Drawing.Point(8, 323);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 24);
+            this.label2.Size = new System.Drawing.Size(85, 24);
             this.label2.TabIndex = 225;
-            this.label2.Text = "Firmware";
+            this.label2.Text = "Progress";
             // 
             // timer1
             // 
@@ -113,7 +94,7 @@
             // 
             this.cbEthernet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEthernet.FormattingEnabled = true;
-            this.cbEthernet.Location = new System.Drawing.Point(139, 41);
+            this.cbEthernet.Location = new System.Drawing.Point(106, 42);
             this.cbEthernet.Name = "cbEthernet";
             this.cbEthernet.Size = new System.Drawing.Size(157, 32);
             this.cbEthernet.TabIndex = 235;
@@ -153,28 +134,13 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = global::UpdateDemoApp.Properties.Resources.Update;
-            this.button3.Location = new System.Drawing.Point(328, 21);
+            this.button3.Location = new System.Drawing.Point(312, 21);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(72, 72);
             this.button3.TabIndex = 237;
             this.button3.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancel.Enabled = false;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Image = global::UpdateDemoApp.Properties.Resources.Cancel64;
-            this.btnCancel.Location = new System.Drawing.Point(324, 359);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(76, 72);
-            this.btnCancel.TabIndex = 233;
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnBrowse
             // 
@@ -183,7 +149,7 @@
             this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowse.Image = global::UpdateDemoApp.Properties.Resources.file;
             this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBrowse.Location = new System.Drawing.Point(12, 350);
+            this.btnBrowse.Location = new System.Drawing.Point(17, 350);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(76, 72);
             this.btnBrowse.TabIndex = 226;
@@ -211,7 +177,7 @@
             this.bntOK.FlatAppearance.BorderSize = 0;
             this.bntOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntOK.Image = global::UpdateDemoApp.Properties.Resources.bntOK_Image;
-            this.bntOK.Location = new System.Drawing.Point(428, 359);
+            this.bntOK.Location = new System.Drawing.Point(452, 356);
             this.bntOK.Name = "bntOK";
             this.bntOK.Size = new System.Drawing.Size(76, 72);
             this.bntOK.TabIndex = 223;
@@ -225,9 +191,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 440);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lbCount);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.bntOK);
@@ -251,9 +214,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label lbCount;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Button bntOK;

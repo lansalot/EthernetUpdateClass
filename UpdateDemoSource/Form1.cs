@@ -38,6 +38,8 @@ namespace UpdateDemoApp
         private byte ModuleType = 0;          // 0 - Teensy AutoSteer, 1 - Teensy Rate
         private int TotalLines = 0;
         private string hexFileName = "";
+        private bool uploadRequestActive = false;
+        private bool uploadStarted = false;
 
         public Form1()
         {
@@ -62,9 +64,10 @@ namespace UpdateDemoApp
         public void CheckLines(byte[] data)
         {
             int lines = data[2] | (data[3] << 8) | (data[4] << 16) | (data[5] << 24);
+            UpdateProgress(0);
             if (TotalLines == lines)
             {
-                tbMessages.Text += "Upload Success! Wait about 1 minute for the new firmware to be installed. The subnet may need to be updated after install.\r\n";
+                tbMessages.Text += "Upload Success!\r\nWait about 1 minute for the new firmware to be installed.\r\nThe subnet may need to be updated after install.\r\n";
                 UDPupdate.SendUDPMessage(new byte[] { 0x3a, 0x00, 0x00, 0x00, 0x06, 0xFA });
             }
             else
@@ -76,10 +79,16 @@ namespace UpdateDemoApp
 
         public void DoUpdate(byte[] data)
         {
+            if (!uploadRequestActive || uploadStarted)
+            {
+                return;
+            }
+
             try
             {
                 if (data[2] == ModuleID && data[3] == 100)
                 {
+                    uploadStarted = true;
                     timer1.Enabled = false;
                     if (File.Exists(hexFileName))
                     {
@@ -112,7 +121,6 @@ namespace UpdateDemoApp
                                             idx++;
                                         }
                                     }
-                                    lbCount.Text = idx.ToString();
                                     Application.DoEvents();
 
                                     UpdateProgress(idx * 100 / ExpectedLines);
@@ -133,6 +141,7 @@ namespace UpdateDemoApp
             {
                 Tls.WriteErrorLog(this.Text + "/DoUpdate " + ex.Message);
             }
+            uploadRequestActive = false;
             SetButtonUpload(true);
         }
 
@@ -176,10 +185,7 @@ namespace UpdateDemoApp
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            btnUpload.Enabled = true;
-        }
+
 
         private void btnSendSubnet_Click(object sender, EventArgs e)
         {
@@ -200,13 +206,24 @@ namespace UpdateDemoApp
         {
             try
             {
+                if (uploadRequestActive)
+                {
+                    return;
+                }
+
+                uploadRequestActive = true;
+                uploadStarted = false;
+
                 PGN32800 BeginUpdate = new PGN32800(this);
+                tbMessages.Text += "Flashing!\r\n";
                 BeginUpdate.Send(ModuleID, ModuleType, true);
                 timer1.Enabled = true;
                 SetButtonUpload(false);
             }
             catch (Exception ex)
             {
+                uploadRequestActive = false;
+                uploadStarted = false;
                 Tls.WriteErrorLog(this.Text + "/btnUpload " + ex.Message);
             }
         }
@@ -252,6 +269,7 @@ namespace UpdateDemoApp
             try
             {
                 cbEthernet.Items.Clear();
+                string defaultLocal192 = null;
                 foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
                 {
                     if ((item.NetworkInterfaceType == NetworkInterfaceType.Ethernet || item.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) && item.OperationalStatus == OperationalStatus.Up)
@@ -260,12 +278,24 @@ namespace UpdateDemoApp
                         {
                             if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                             {
-                                cbEthernet.Items.Add(ip.Address.ToString());
+                                string ipAddress = ip.Address.ToString();
+                                cbEthernet.Items.Add(ipAddress);
+                                if (defaultLocal192 == null && ipAddress.StartsWith("192.168."))
+                                {
+                                    defaultLocal192 = ipAddress;
+                                }
                             }
                         }
                     }
                 }
-                cbEthernet.SelectedIndex = cbEthernet.FindString(Subnet);
+                if (defaultLocal192 != null)
+                {
+                    cbEthernet.SelectedIndex = cbEthernet.FindStringExact(defaultLocal192);
+                }
+                else
+                {
+                    cbEthernet.SelectedIndex = -1;
+                }
             }
             catch (Exception ex)
             {
@@ -279,12 +309,10 @@ namespace UpdateDemoApp
             {
                 if (Edited)
                 {
-                    btnCancel.Enabled = true;
                     bntOK.Image = Properties.Resources.Save;
                 }
                 else
                 {
-                    btnCancel.Enabled = false;
                     bntOK.Image = Properties.Resources.bntOK_Image;
                 }
                 FormEdited = Edited;
@@ -314,6 +342,8 @@ namespace UpdateDemoApp
         {
             tbMessages.Text += "Could not connect to the module. Check connection or subnet.\r\n" + "\r\n";
             timer1.Enabled = false;
+            uploadRequestActive = false;
+            uploadStarted = false;
             SetButtonUpload(true);
         }
 
