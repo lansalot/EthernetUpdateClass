@@ -153,6 +153,24 @@ namespace TeensyFlash
             return hexres.ToArray();
         }
 
+        public void AppendMessage(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                return;
+            }
+
+            if (tbMessages.InvokeRequired)
+            {
+                tbMessages.BeginInvoke(new Action<string>(AppendMessage), message);
+                return;
+            }
+
+            tbMessages.Text += message + "\r\n";
+            tbMessages.Select(tbMessages.Text.Length, 0);
+            tbMessages.ScrollToCaret();
+        }
+
         private void bntOK_Click(object sender, EventArgs e)
         {
             if (FormEdited)

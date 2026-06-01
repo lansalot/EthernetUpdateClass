@@ -1,9 +1,11 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TeensyFlash
@@ -23,6 +25,11 @@ namespace TeensyFlash
         private Socket recvSocket;
         private Socket sendSocket;
         private Form1 mf;
+        private readonly object cHeartbeatLock = new object();
+        private readonly TimeSpan cHeartbeatTimeout = TimeSpan.FromSeconds(5);
+        private DateTime cLastHeartbeatUtc = DateTime.MinValue;
+        private bool cHeartbeatSeen = false;
+        private Timer cHeartbeatMonitorTimer;
 
         public UDPcomm(Form1 CallingForm, int ReceivePort, int SendToPort, int SendFromPort,
         string ConnectionName, string DestinationEndPoint = "")
@@ -64,6 +71,12 @@ namespace TeensyFlash
         {
             try
             {
+                if (cHeartbeatMonitorTimer != null)
+                {
+                    cHeartbeatMonitorTimer.Dispose();
+                    cHeartbeatMonitorTimer = null;
+                }
+
                 recvSocket.Close();
                 sendSocket.Close();
             }
@@ -127,6 +140,11 @@ namespace TeensyFlash
                 // Start listening for incoming data
                 recvSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref client, new AsyncCallback(ReceiveData), recvSocket);
                 cIsUDPSendConnected = true;
+
+                if (cHeartbeatMonitorTimer == null)
+                {
+                    cHeartbeatMonitorTimer = new Timer(CheckHeartbeatState, null, 1000, 1000);
+                }
             }
             catch (Exception e)
             {
@@ -161,12 +179,61 @@ namespace TeensyFlash
                         case 32802:
                             if (mf.Tls.GoodCRC(Data)) mf.DoUpdate(Data);
                             break;
+                        case 32803: // heartbeat
+                            HandleHeartbeat();
+                            break;
                     }
                 }
             }
             catch (Exception ex)
             {
                 mf.Tls.WriteErrorLog("UDPcomm/HandleData " + ex.Message);
+            }
+        }
+
+        private void HandleHeartbeat()
+        {
+            bool notifyFound = false;
+
+            lock (cHeartbeatLock)
+            {
+                cLastHeartbeatUtc = DateTime.UtcNow;
+                if (!cHeartbeatSeen)
+                {
+                    cHeartbeatSeen = true;
+                    notifyFound = true;
+                }
+            }
+
+            if (notifyFound)
+            {
+                mf.AppendMessage("Teensy heartbeat found!");
+            }
+        }
+
+        private void CheckHeartbeatState(object state)
+        {
+            try
+            {
+                bool notifyLost = false;
+
+                lock (cHeartbeatLock)
+                {
+                    if (cHeartbeatSeen && DateTime.UtcNow - cLastHeartbeatUtc >= cHeartbeatTimeout)
+                    {
+                        cHeartbeatSeen = false;
+                        notifyLost = true;
+                    }
+                }
+
+                if (notifyLost)
+                {
+                    mf.AppendMessage("Teensy heartbeat lost");
+                }
+            }
+            catch (Exception ex)
+            {
+                mf.Tls.WriteErrorLog("UDPcomm/CheckHeartbeatState " + ex.Message);
             }
         }
 

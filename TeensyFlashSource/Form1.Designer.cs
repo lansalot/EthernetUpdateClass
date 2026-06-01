@@ -55,7 +55,7 @@
             this.tbMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbMessages.Size = new System.Drawing.Size(516, 184);
             this.tbMessages.TabIndex = 228;
-            this.tbMessages.Text = "Select a firmware, then flash!";
+            this.tbMessages.Text = "Select a firmware, then flash!\r\n";
             this.tbMessages.WordWrap = false;
             this.tbMessages.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.tbHexfile_HelpRequested);
             // 
