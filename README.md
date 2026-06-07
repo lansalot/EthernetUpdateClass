@@ -36,6 +36,12 @@ EthernetStart();
 updater.begin();
 ```
 
+in `loop()`:
+
+```cpp
+  updater.sendHeartbeat();
+```
+
 At the end of your AOG `udpReceive`:`:
 
 ```cpp
@@ -54,4 +60,5 @@ At the end of your AOG `udpReceive`:`:
 ## Notes
 
 - Call `updater.begin()` only after Ethernet is up, or the updater socket will not start.
+- call `updater.sendHeartbeat();` in your main loop
 - Don't forget to add `checkPacket` to the end of the main AOG UDP receive function
