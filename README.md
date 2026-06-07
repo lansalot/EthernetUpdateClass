@@ -9,16 +9,19 @@ Use the updater found here: https://github.com/SK21/EthernetUpdate/tree/main/Upd
 And in time I'll integrate it into AogConfigOMatic
 
 ## What to copy into your project
+
 - `EthernetUpdater.h`
 - `EthernetUpdater.cpp`
 - `FlashTxx.h`
 - `FlashTxx.c`
 
 ## Prerequisites
+
 - Project already uses `NativeEthernet` / `NativeEthernetUdp`.
 - Your normal Ethernet init (`Ethernet.begin(...)`, `Ethernet.setLocalIP(...)`) is already working.
 
 ## Integration (minimal)
+
 In your declarations:
 
 ```cpp
@@ -33,17 +36,22 @@ EthernetStart();
 updater.begin();
 ```
 
-In `loop()`:
+At the end of your AOG `udpReceive`:`:
 
 ```cpp
-updater.poll();
+  {
+    // Final check: updater parses this packet from the main UDP path without consuming another UDP packet.
+    updater.checkPacket(udpData, sizeToRead, src_ip);
+  }
 ```
 
 ## Built-in behavior
+
 - Receive port is fixed: `29100`
 - Send port is fixed: `29000`
 - Destination IP is auto-derived as local `/24` broadcast (`x.y.z.255`)
 
 ## Notes
+
 - Call `updater.begin()` only after Ethernet is up, or the updater socket will not start.
-- Keep `updater.poll()` in the main loop so update packets are continuously serviced.
+- Don't forget to add `checkPacket` to the end of the main AOG UDP receive function
