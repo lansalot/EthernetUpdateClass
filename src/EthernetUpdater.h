@@ -9,7 +9,7 @@ public:
     EthernetUpdater();
 
     void begin();
-    bool checkPacket(const uint8_t* packetData, uint16_t packetLength, const IPAddress& remoteIp);
+    bool checkPacket(const uint8_t* packetData, uint16_t packetLength);
     void sendHeartbeat();
     bool isUpdating() const;
     int linesReceived() const;

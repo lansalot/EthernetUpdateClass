@@ -38,7 +38,7 @@ void EthernetUpdater::begin()
 	}
 }
 
-bool EthernetUpdater::checkPacket(const uint8_t *packetData, uint16_t packetLength, const IPAddress &remoteIp)
+bool EthernetUpdater::checkPacket(const uint8_t *packetData, uint16_t packetLength)
 {
 	if (!started_)
 	{
@@ -94,13 +94,10 @@ bool EthernetUpdater::checkPacket(const uint8_t *packetData, uint16_t packetLeng
 		{
 			if (goodCRC(receivedData_, pgnLength))
 			{
-				sender_ = remoteIp;
 				if (firmware_buffer_init(&bufferAddr_, &bufferSize_))
 				{
 					Serial.printf("target = %s (%dK flash in %dK sectors)\n", FLASH_ID, FLASH_SIZE / 1024, FLASH_SECTOR_SIZE / 1024);
 					Serial.printf("buffer = %1luK %s (%08lX - %08lX)\n", bufferSize_ / 1024, IN_FLASH(bufferAddr_) ? "FLASH" : "RAM", bufferAddr_, bufferAddr_ + bufferSize_);
-					Serial.print("update sender IP: ");
-					Serial.println(sender_);
 					Serial.println("waiting for hex lines...\n");
 					resetHexState();
 					updateMode_ = true;
@@ -196,10 +193,9 @@ void EthernetUpdater::sendHeartbeat()
 	}
 
 	uint32_t now = millis();
+	uint8_t data[8] = {35, 128, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	if (now - lastHeartbeatMs_ >= 3000U)
 	{
-		uint8_t data[8] = {35, 128, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-
 		comm_.beginPacket(destination_, SendPort);
 		comm_.write(data, sizeof(data));
 		comm_.endPacket();
